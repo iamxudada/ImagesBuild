@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Copyright (c) 2024-08-01 xulinchun <xulinchun0806@outlook.com>
+#
+# This file is part of LMD.
+#
+# LMD is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2.1 of the License, or
+# (at your option) any later version.
+#
+# LMD is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with LMD.  If not, see <http://www.gnu.org/licenses/>.
+#==============================================================================
+
+source /usr/local/Ascend/ascend-toolkit/set_env.sh
+export HCCL_CONNECT_TIMEOUT=7200
+export ASCEND_RT_VISIBLE_DEVICES=${DEVICES_NUMS_IDS}
+
+python3 -m fastchat.serve.model_worker --model-names {FASTCHAT_WORKER_MODEL_NAMES:-lmd-model} \
+--model-path ./models --worker-address http://fastchat-model-worker:21002 \
+--controller-address http://fastchat-controller:21001 --device npu --num-gpus ${NUM_GPUS} \
+--max-gpu-memory ${MAX_GPU_MEMORY} --host 0.0.0.0 --port 21002

@@ -1,0 +1,17 @@
+uvicorn
+fastapi
+langchain_community
+torch==2.2.0
+torchaudio
+torchvision
+torch-npu==2.2.0
+decorator
+scipy
+cloudpickle
+psutil
+tornado
+sentence_transformers
+cffi
+protobuf
+pathlib2
+absl-py

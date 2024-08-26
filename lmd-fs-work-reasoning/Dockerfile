@@ -1,0 +1,23 @@
+FROM python:3.10-slim
+
+LABEL maintainer="xulinchun xulinchun0806@outlook.com" \
+      org.opencontainers.image.authors="xulinchun xulinchun0806@outlook.com" \
+      org.opencontainers.image.base.name="ubuntu:20.04" \
+      org.opencontainers.image.created="2024-08-06T00:00:00Z" \
+      org.opencontainers.image.description="LMD FS WORK REASONING" \
+      org.opencontainers.image.documentation="" \
+      org.opencontainers.image.licenses="GPLv2.1" \
+      org.opencontainers.image.ref.name="lmd-fs-work-reasoning" \
+      org.opencontainers.image.source="" \
+      org.opencontainers.image.title="lmd-fs-work-reasoning" \
+      org.opencontainers.image.vendor="xulinchun" \
+      org.opencontainers.image.version="v1"
+
+COPY lmd-fs-modelwork-reasoning/workspace /workspace
+WORKDIR /workspace
+
+RUN pip3 config set global.index-url "$PIP_INDEX" \
+    && pip3 config set global.extra-index-url "$TORCH_INDEX" \
+    && pip3 install --no-cache-dir --upgrade --quiet --default-timeout=1000 pip setuptools wheel \
+    && pip3 install --no-cache-dir --quiet --default-timeout=1000 -e ".[model_worker]" \
+    && pip3 cache purge && rm -rf /tmp/* /root/.cache/*

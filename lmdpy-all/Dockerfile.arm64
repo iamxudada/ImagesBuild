@@ -1,0 +1,31 @@
+FROM --platform=linux/arm64/v8 quay.io/supiedt/lmdpy-all:v1-arm64-2024.08.18
+
+LABEL maintainer="xulinchun xulinchun0806@outlook.com"
+LABEL org.opencontainers.image.authors="xulinchun xulinchun0806@outlook.com" \
+      org.opencontainers.image.base.name="ubuntu 22.04" \
+      org.opencontainers.image.npu_name="Ascend 910" \
+      org.opencontainers.image.npu_driver_version="23.0.0" \
+      org.opencontainers.image.npu_framework_version="7.1.0.3.220" \
+      org.opencontainers.image.cann_version="8.0.RC3.Alpha1" \
+      org.opencontainers.image.created="2024-08-18T00:00:00Z" \
+      org.opencontainers.image.description="LMD PY ALL" \
+      org.opencontainers.image.documentation="" \
+      org.opencontainers.image.licenses="GPLv2.1" \
+      org.opencontainers.image.ref.name="lmd-py-all" \
+      org.opencontainers.image.source="" \
+      org.opencontainers.image.title="lmd-py-all" \ 
+      org.opencontainers.image.vendor="xulinchun" \
+      org.opencontainers.image.version="v1"
+
+ENV LD_LIBRARY_PATH=/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64:/usr/local/Ascend/ascend-toolkit/latest/tools/aml/lib64/plugin:/usr/local/Ascend/ascend-toolkit/latest/lib64:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/opskernel:/usr/local/Ascend/ascend-toolkit/latest/lib64/plugin/nnengine:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/x86_64:/usr/local/Ascend/driver/lib64/common:/usr/local/Ascend/driver/lib64/driver:/usr/local/Ascend/driver/lib64:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe/op_tiling/lib/linux/aarch64:/usr/local/Ascend/nnrt/latest/lib64
+ENV PATH=/usr/local/Ascend/ascend-toolkit/latest/bin:/usr/local/Ascend/ascend-toolkit/latest/compiler/ccec_compiler/bin:/usr/local/Ascend/ascend-toolkit/latest/tools/ccec_compiler/bin:/miniconda/condabin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PYTHONPATH=/usr/local/Ascend/ascend-toolkit/latest/python/site-packages:/usr/local/Ascend/ascend-toolkit/latest/opp/built-in/op_impl/ai_core/tbe:/usr/local/Ascend/ascend-toolkit/latest/opp/op_impl/built-in/ai_core/tbe
+ENV ASCEND_AICPU_PATH=/usr/local/Ascend/ascend-toolkit/latest
+ENV ASCEND_AUTOML_PATH=/usr/local/Ascend/ascend-toolkit/latest/tools
+ENV ASCEND_HOME_PATH=/usr/local/Ascend/ascend-toolkit/latest
+ENV ASCEND_OPP_PATH=/usr/local/Ascend/ascend-toolkit/latest/opp
+ENV ASCEND_TOOLKIT_HOME=/usr/local/Ascend/ascend-toolkit/latest
+
+WORKDIR /workspace
+ENTRYPOINT [ "start-py" ]
+

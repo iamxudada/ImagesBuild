@@ -1,0 +1,12 @@
+uvicorn
+fastapi
+sentence_transformers
+numpy==1.26.4
+decorator
+attrs
+cloudpickle
+torch==2.2.0
+tornado
+torchaudio
+torchvision
+torch-npu==2.2.0

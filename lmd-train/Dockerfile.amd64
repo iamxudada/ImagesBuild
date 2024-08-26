@@ -1,0 +1,20 @@
+FROM --platform=linux/amd64 quay.io/supiedt/lmd-train:v1-amd64-2024.08.18
+
+LABEL maintainer="xulinchun xulinchun0806@outlook.com" \
+      org.opencontainers.image.authors="xulinchun xulinchun0806@outlook.com" \
+      org.opencontainers.image.base.name="ubuntu:20.04" \
+      org.opencontainers.image.npu_name="Ascend 910" \
+      org.opencontainers.image.npu_driver_version="23.0.0" \
+      org.opencontainers.image.npu_framework_version="7.1.0.3.220" \
+      org.opencontainers.image.cann_version="8.0.RC3.Alpha1" \
+      org.opencontainers.image.created="2024-08-18T00:00:00Z" \
+      org.opencontainers.image.description="LMD TRAIN LLAMA_FACTORY" \
+      org.opencontainers.image.documentation="" \
+      org.opencontainers.image.licenses="GPLv2.1" \
+      org.opencontainers.image.ref.name="lmd-train-llama_factory" \
+      org.opencontainers.image.source="" \
+      org.opencontainers.image.title="lmd-train-llama_factory" \
+      org.opencontainers.image.vendor="xulinchun" \
+      org.opencontainers.image.version="v1"
+
+WORKDIR /workspace
